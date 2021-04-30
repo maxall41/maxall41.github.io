@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="node_modules/@dracula/dracula-ui/styles/dracula-ui.css"
+    />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <title>Max's portfolio site</title>
+  </head>
+  <body class="drac-bg-black container">
+    <div
+      class="drac-box drac-bg-black drac-rounded main drac-border-orange"
+      id="mainCard"
+    >
+      <h2 class="drac-heading drac-heading-2xl drac-text-white">
+        Hi, I'm max.
+      </h2>
+      <div style="margin-left: 1rem;" id="text"></div><div id="cursor"></div>
+      <!-- <span
+        onclick="AboutMeClick()"
+        class="drac-text drac-line-height drac-text-cyan drac-text"
+        >Software Developer</span
+      > -->
+      <div style="margin-top: 1rem;">
+        <span
+          id="aboutText"
+          onclick="AboutMeClick()"
+          style="cursor: pointer;"
+          class="drac-text drac-line-height drac-text-purple drac-text"
+          >About Me</span
+        >
+        <span
+          onclick="SkillsClick()"
+          id="SkillsText"
+          style="cursor: pointer;"
+          class="drac-text drac-line-height drac-text-white"
+          >Skills</span
+        >
+        <span
+          onclick="ContactMeClick()"
+          id="ContactText"
+          style="cursor: pointer;"
+          class="drac-text drac-line-height drac-text-white"
+          >Contact Me</span
+        >
+
+        <div class="drac-box drac-mb-sm" id="divider">
+          <hr class="drac-divider drac-border-cyan" />
+        </div>
+      </div>
+      <div>
+        <span
+          id="aboutMeText"
+          class="drac-text drac-line-height drac-text-white"
+          style="text-align: left;"
+          >I’m a front end web developer, backend programmer and game developer
+          based in San Francisco. I’m passionate about designing incredible
+          experiences.</span
+        >
+
+        <ol id="skillsList" class="drac-list" style="display: none;">
+          <li class="drac-text drac-text-white drac-text-cyan"><a
+            class="drac-text drac-text-white drac-text-cyan"
+            style="text-decoration: none;"
+            href="https://vuejs.org/"
+            >Vue.js</a
+          ></li>
+          <li class="drac-text drac-text-white drac-text-green"><a
+            class="drac-text drac-text-white drac-text-green"
+            style="text-decoration: none;"
+            href="https://nuxtjs.org/"
+            >Nuxt.js</a
+          ></li>
+          <li class="drac-text drac-text-white drac-text-orange"><a
+            class="drac-text drac-text-white drac-text-orange"
+            style="text-decoration: none;"
+            href="https://nodejs.org/en/"
+            >Node.js</a
+          ></li>
+          <li class="drac-text drac-text-white drac-text-pink"><a
+            class="drac-text drac-text-white drac-text-pink"
+            style="text-decoration: none;"
+            href="https://expressjs.com/"
+            >Express</a
+          ></li>
+          <li class="drac-text drac-text-white drac-text-purple"><a
+            class="drac-text drac-text-white drac-text-purple"
+            style="text-decoration: none;"
+            href="https://www.python.org/"
+            >Python</a</li>
+          <li>
+            <a
+              class="drac-text drac-text-white drac-text-yellow"
+              style="text-decoration: none;"
+              href="https://en.wikipedia.org/wiki/C_Sharp_%28programming_language%29"
+              >C#</a
+            >
+          </li>
+        </ol>
+        <div id="contactSection" style="display: none;">
+          <span
+            id="aboutMeText"
+            class="drac-text drac-line-height drac-text-white"
+            style="text-align: left;"
+            onclick="copyToClipboard('contactme321@pm.me')"
+            >Send me an email at
+            <span class="drac-text-cyan">contactme321@pm.me</span></span
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  function SkillsClick() {
+    document.getElementById("aboutText").classList.remove("drac-text-purple");
+    document.getElementById("aboutText").classList.add("drac-text-white");
+
+    document.getElementById("SkillsText").classList.add("drac-text-purple");
+
+    document.getElementById("skillsList").style.display = "block";
+
+    document.getElementById("aboutMeText").style.display = "none";
+
+    document.getElementById("contactSection").style.display = "none";
+
+    document.getElementById("ContactText").classList.remove("drac-text-purple");
+    document.getElementById("ContactText").classList.add("drac-text-white");
+  }
+  function AboutMeClick() {
+    document.getElementById("aboutText").classList.add("drac-text-purple");
+    document.getElementById("aboutText").classList.remove("drac-text-white");
+
+    document.getElementById("SkillsText").classList.remove("drac-text-purple");
+
+    document.getElementById("skillsList").style.display = "none";
+
+    document.getElementById("aboutMeText").style.display = "block";
+
+    document.getElementById("contactSection").style.display = "none";
+
+    document.getElementById("ContactText").classList.remove("drac-text-purple");
+    document.getElementById("ContactText").classList.add("drac-text-white");
+  }
+
+  function ContactMeClick() {
+    document.getElementById("aboutText").classList.remove("drac-text-purple");
+    document.getElementById("aboutText").classList.add("drac-text-white");
+
+    document.getElementById("SkillsText").classList.remove("drac-text-purple");
+
+    document.getElementById("skillsList").style.display = "none";
+
+    document.getElementById("aboutMeText").style.display = "none";
+
+    document.getElementById("contactSection").style.display = "block";
+
+    document.getElementById("ContactText").classList.add("drac-text-purple");
+    document.getElementById("ContactText").classList.remove("drac-text-white");
+  }
+
+  
+
+  function copyToClipboard(text) {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+
+    Toast.fire({
+      title: "Copied",
+      background: "#8AFF80",
+    });
+    if (window.clipboardData && window.clipboardData.setData) {
+      // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
+      return window.clipboardData.setData("Text", text);
+    } else if (
+      document.queryCommandSupported &&
+      document.queryCommandSupported("copy")
+    ) {
+      var textarea = document.createElement("textarea");
+      textarea.textContent = text;
+      textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in Microsoft Edge.
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        return document.execCommand("copy"); // Security exception may be thrown by some browsers.
+      } catch (ex) {
+        console.warn("Copy to clipboard failed.", ex);
+        return false;
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+  }
+
+  var _CONTENT = [ 
+	"Software Developer", 
+	"Game Developer", 
+	"Mobile App Developer", 
+];
+
+var _PART = 0;
+
+// Character number of the current sentence being processed 
+var _PART_INDEX = 0;
+
+// Holds the handle returned from setInterval
+var _INTERVAL_VAL;
+
+// Element that holds the text
+var _ELEMENT = document.querySelector("#text");
+
+// Cursor element 
+var _CURSOR = document.querySelector("#cursor");
+
+// Implements typing effect
+function Type() { 
+	// Get substring with 1 characater added
+	var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+	_ELEMENT.innerHTML = text;
+	_PART_INDEX++;
+
+	// If full sentence has been displayed then start to delete the sentence after some time
+	if(text === _CONTENT[_PART]) {
+		// Hide the cursor
+		_CURSOR.style.display = 'none';
+
+		clearInterval(_INTERVAL_VAL);
+		setTimeout(function() {
+			_INTERVAL_VAL = setInterval(Delete, 50);
+		}, 1000);
+	}
+}
+
+// Implements deleting effect
+function Delete() {
+	// Get substring with 1 characater deleted
+	var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+	_ELEMENT.innerHTML = text;
+	_PART_INDEX--;
+
+	// If sentence has been deleted then start to display the next sentence
+	if(text === '') {
+		clearInterval(_INTERVAL_VAL);
+
+		// If current sentence was last then display the first one, else move to the next
+		if(_PART == (_CONTENT.length - 1))
+			_PART = 0;
+		else
+			_PART++;
+		
+		_PART_INDEX = 0;
+
+		// Start to display the next sentence after some time
+		setTimeout(function() {
+			_CURSOR.style.display = 'inline-block';
+			_INTERVAL_VAL = setInterval(Type, 100);
+		}, 200);
+	}
+}
+
+// Start the typing effect on load
+_INTERVAL_VAL = setInterval(Type, 100);
+</script>
+<style>
+  #mainCard {
+    height: 90vh;
+    width: 90vw;
+  }
+
+  #mainCard {
+    border: 2px solid #9580ff;
+  }
+
+  .drac-text {
+    margin-left: 1rem !important;
+  }
+
+  .drac-heading {
+    margin-left: 1rem !important;
+  }
+
+  #divider {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  #text {
+	display: inline-block;
+	vertical-align: middle;
+	color: #9580FF;
+}
+
+#cursor {
+	display: inline-block;
+	vertical-align: middle;
+	width: 3px;
+	height: 15px;
+	background-color: #9580FF;
+	animation: blink .75s step-end infinite;
+}
+
+@keyframes blink {
+	from, to { 
+		background-color: transparent 
+	}
+	50% { 
+		background-color: #9580FF; 
+	}
+}
+</style>
