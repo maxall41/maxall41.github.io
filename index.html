@@ -108,9 +108,8 @@
             id="aboutMeText"
             class="drac-text drac-line-height drac-text-white"
             style="text-align: left;"
-            onclick="copyToClipboard('contactme321@pm.me')"
             >Send me an email at
-            <span class="pointer" class="drac-text-cyan">contactme321@pm.me</span></span
+            <span class="pointer" onclick="copyToClipboard('contactme321@pm.me')" class="drac-text-cyan">contactme321@pm.me</span></span
           >
         </div>
       </div>
@@ -118,6 +117,104 @@
   </body>
 </html>
 <script>
+
+  const originalURL = window.location.href
+
+
+
+  var page = getUrlVars()["page"]
+
+
+  switch (page) {
+    case "contact":
+
+      ContactMeClick()
+      
+      break;
+
+    case "skills":
+
+      SkillsClick()
+      
+      break;
+
+    case "about":
+
+      AboutMeClick()
+      
+      break;
+  
+    default:
+      break;
+  }
+
+
+  function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+  }
+
+  function findSubstringOccurrences(str, word) {
+        let occurrences = 0;
+        for(let i=0; i<str.length; i++){
+            if(word[0] === str[i]){ // to make it faster and iterate less
+                for(let j=0; j<word.length; j++){
+                    if(str[i+j] !== word[j]) break;
+                    if(j === word.length - 1) occurrences++;
+                }
+            }
+        }
+        return occurrences;
+    }
+
+  function updatePageParam(param) {
+
+    removePageParams()
+
+    const nextTitle = "Max's portfolio";
+    const nextState = { additionalInformation: 'Updated the URL with JS' };
+
+
+ 
+
+    if (findSubstringOccurrences(window.location.href,"page") > 0) {
+      const nextURL = window.location.href + param.replace("?","&");
+
+    // This will create a new entry in the browser's history, without reloading
+    window.history.pushState(nextState,nextTitle,nextURL);
+
+    // This will replace the current entry in the browser's history, without reloading
+    window.history.replaceState(nextState,nextTitle,nextURL);
+
+    } else {
+        const nextURL = window.location.href + param;
+
+      // This will create a new entry in the browser's history, without reloading
+      window.history.pushState(nextState,nextTitle,nextURL);
+
+      // This will replace the current entry in the browser's history, without reloading
+      window.history.replaceState(nextState,nextTitle,nextURL);
+    }
+  }
+
+  function removePageParams() {
+    const nextTitle = "Max's portfolio";
+    const nextState = { additionalInformation: 'Updated the URL with JS' };
+
+    const nextURL = originalURL;
+
+    // This will create a new entry in the browser's history, without reloading
+    window.history.pushState(nextState,nextTitle,nextURL);
+
+    // This will replace the current entry in the browser's history, without reloading
+    window.history.replaceState(nextState,nextTitle,nextURL);
+   
+
+  }
+
   function SkillsClick() {
     document.getElementById("aboutText").classList.remove("drac-text-purple");
     document.getElementById("aboutText").classList.add("drac-text-white");
@@ -132,6 +229,12 @@
 
     document.getElementById("ContactText").classList.remove("drac-text-purple");
     document.getElementById("ContactText").classList.add("drac-text-white");
+
+    if (window.location.href.includes("page=skills") == false) {
+      updatePageParam("?page=skills")
+    }
+
+    
   }
   function AboutMeClick() {
     document.getElementById("aboutText").classList.add("drac-text-purple");
@@ -147,6 +250,10 @@
 
     document.getElementById("ContactText").classList.remove("drac-text-purple");
     document.getElementById("ContactText").classList.add("drac-text-white");
+
+    if (window.location.href.includes("page=about") == false) {
+      updatePageParam("?page=about")
+    }
   }
 
   function ContactMeClick() {
@@ -163,6 +270,12 @@
 
     document.getElementById("ContactText").classList.add("drac-text-purple");
     document.getElementById("ContactText").classList.remove("drac-text-white");
+
+
+    if (window.location.href.includes("page=contact") == false) {
+      updatePageParam("?page=contact")
+    }
+
   }
 
   
