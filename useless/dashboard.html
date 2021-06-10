@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="shortcut icon" href="dashboard.svg" type="image/x-icon" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <title>Dashboard</title>
   </head>
   <body>
@@ -19,9 +20,67 @@
     <h4 id="MP">Max: $0</h4>
     <h4 id="BP">Brian: $0</h4>
     <hr />
+    <button onclick="NewLazyBox();">Create new LAZY BOX</button>
+    <button onclick="BoxesShipped();">Boxes shipped</button>
   </body>
 </html>
 <script>
+  function BoxesShipped() {
+    Swal.fire({
+      title: "Work in progress...",
+    });
+  }
+  function NewLazyBox() {
+    Swal.fire({
+      title: "Enter customer's address",
+      input: "text",
+      showCancelButton: true,
+      inputValidator: (value) => {
+        if (!value) {
+          return "You need to write something!";
+        }
+      },
+    }).then((address) => {
+      Swal.fire({
+        title: "Enter customer's zipcode",
+        input: "text",
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return "You need to write something!";
+          }
+        },
+      }).then((zipcode) => {
+        Swal.fire({
+          title: "Enter customer's name",
+          input: "text",
+          showCancelButton: true,
+          inputValidator: (value) => {
+            if (!value) {
+              return "You need to write something!";
+            }
+          },
+        }).then((name) => {
+          axios
+            .post("https://lazy-box-server.herokuapp.com/addBox", {
+              name: name.value,
+              address: address.value,
+              zipcode: zipcode.value,
+            })
+            .then(function (response) {
+              Swal.fire({
+                title: "Your new lazy box id is: " + response.data,
+                icon: "success",
+              });
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
+      });
+    });
+  }
+
   axios
     .get("https://lazy-box-server.herokuapp.com/getDashboard")
     .then(function (response) {
