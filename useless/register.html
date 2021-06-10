@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register your LAZY BOX</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="center">
+      <h1 id="title">
+        Enter your LAZY BOXE'S id:
+      </h1>
+      <p id="sub">
+        You can find the lazy box id on the bottom of your LAZY BOX.
+      </p>
+      <input id="LAZY-IN" onkeydown="upperCaseF(this)" />
+      <button onclick="submit();" class="btn dashed thin">Submit</button>
+      <div id="modal">
+        <div id="flex-modal">
+          <h1>Done</h1>
+          <p>
+            Your lazy box has been sucsessfully registered. You will be mailed
+            your certificate of registration in 1 - 2 weeks.
+          </p>
+          <button
+            onclick="document.location.href = '/useless/home.html'"
+            class="btn dashed thin norotate"
+          >
+            Ok
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  var idSumbittedAlready = false;
+  var id;
+  var name;
+
+  function upperCaseF(a) {
+    setTimeout(function () {
+      a.value = a.value.toUpperCase();
+    }, 1);
+  }
+
+  function submit() {
+    if (idSumbittedAlready == false) {
+      id = document.getElementById("LAZY-IN").value;
+      console.log(id);
+
+      document.getElementById("title").innerHTML =
+        "Enter the LAZY BOXE'S name:";
+      document.getElementById("sub").innerHTML =
+        "Once you name your LAZY BOX you will be shipped a certificate of registration";
+      idSumbittedAlready = true;
+    } else {
+      name = document.getElementById("LAZY-IN").value;
+
+      console.log("Registering");
+
+      axios
+        .post("https://lazy-box-server.herokuapp.com/register", {
+          id: id,
+          name: name,
+        })
+        .then(function (response) {
+          modalReg();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
+
+  function modalReg() {
+    document.getElementById("modal").style.display = "flex";
+  }
+</script>
+<style>
+  @font-face {
+    font-family: dream;
+    src: url(daydream.ttf);
+  }
+  body {
+    background-color: #f12b28;
+    color: #fff;
+    font-family: dream;
+    font-size: 24px;
+  }
+
+  #flex-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #flex-modal p {
+    text-align: center;
+  }
+
+  #modal {
+    z-index: 999;
+    width: 75vw;
+    height: 75vh;
+    background: #f12b28;
+    display: none;
+    border: dashed 2px #fff !important;
+    position: absolute;
+    margin-top: 50vh;
+  }
+
+  a {
+    text-decoration: none;
+    color: rgb(34, 241, 241);
+  }
+
+  input {
+    border: none;
+    background: none;
+    border-bottom: 1px solid cyan;
+    width: 35%;
+    color: #fff;
+    text-align: center;
+  }
+
+  input:focus {
+    outline-width: 0;
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 10rem;
+    height: 2rem;
+    border: none;
+    background: transparent;
+    font-family: dream;
+    font-size: 18px;
+    transform: rotate(6deg);
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    border-bottom-right-radius: 225px 15px;
+    border-bottom-left-radius: 15px 255px;
+    transition: 0.2s linear;
+    color: #fff;
+    margin-top: 2.5rem;
+  }
+
+  .norotate {
+    transform: rotate(0deg) !important;
+  }
+
+  .btn:hover {
+    transform: rotate(0deg);
+    border: solid 2px #fff !important;
+  }
+
+  button.lined.thick {
+    border: solid 3px #fff;
+  }
+  button.dotted.thick {
+    border: dotted 3px #fff;
+  }
+  button.dashed.thick {
+    border: dashed 3px #fff;
+  }
+  button.lined.thin {
+    border: solid 2px #fff;
+  }
+  button.dotted.thin {
+    border: dotted 2px #fff;
+  }
+  button.dashed.thin {
+    border: dashed 2px #fff;
+  }
+</style>
