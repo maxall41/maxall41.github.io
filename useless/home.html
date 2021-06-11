@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="icon.png" type="image/x-icon" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>The lazy box</title>
   </head>
   <body>
@@ -15,9 +17,10 @@
       sockets on the printed circuit board for endless fun. The lazy box can
       also be synced with other Lazy Boxes for maximum lazyness. Make sure to
       register and name you LAZY BOX <a href="register.html">here</a> to get
-      your certificate of registration.
+      your certificate of registration which will be shipped to you in 1 - 2
+      weeks.
     </p>
-    <button class="btn dashed thin">Get one</button>
+    <button onclick="orderBox();" class="btn dashed thin">Get one</button>
   </body>
 </html>
 <style>
@@ -77,3 +80,55 @@
     border: dashed 2px #fff;
   }
 </style>
+<script>
+  function orderBox() {
+    Swal.fire({
+      title: "Enter your street address",
+      input: "text",
+      showCancelButton: true,
+      inputValidator: (value) => {
+        if (!value) {
+          return "You need to write something!";
+        }
+      },
+    }).then((address) => {
+      Swal.fire({
+        title: "Enter your zipcode",
+        input: "text",
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return "You need to write something!";
+          }
+        },
+      }).then((zipcode) => {
+        Swal.fire({
+          title: "Enter your name",
+          input: "text",
+          showCancelButton: true,
+          inputValidator: (value) => {
+            if (!value) {
+              return "You need to write something!";
+            }
+          },
+        }).then((name) => {
+          axios
+            .post("https://lazy-box-server.herokuapp.com/addBox", {
+              name: name.value,
+              address: address.value,
+              zipcode: zipcode.value,
+            })
+            .then(function (response) {
+              Swal.fire({
+                title: "Your new lazy box id is: " + response.data,
+                icon: "success",
+              });
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
+      });
+    });
+  }
+</script>

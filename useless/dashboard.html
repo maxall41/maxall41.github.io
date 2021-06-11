@@ -7,99 +7,144 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="shortcut icon" href="dashboard.svg" type="image/x-icon" />
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script
+      src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js"
+      type="text/javascript"
+    ></script>
     <title>Dashboard</title>
   </head>
   <body>
     <h1>Dashboard:</h1>
     <hr />
-    <h3 id="BTS">Boxes to ship: 0</h3>
-    <h3 id="CCTS">Certificates to ship: 0</h3>
     <h3 id="BRP">Boxes registration percent: 0%</h3>
     <hr />
     <h3>Overall profits:</h3>
     <h4 id="MP">Max: $0</h4>
     <h4 id="BP">Brian: $0</h4>
     <hr />
-    <button onclick="NewLazyBox();">Create new LAZY BOX</button>
-    <button onclick="BoxesShipped();">Boxes shipped</button>
+    <h3>Production:</h3>
+    <h4 id="BTP">Boxes to produce: 0</h4>
+    <h4 id="BTS">Boxes to ship: 0</h4>
+    <h4 id="CCTS">Certificates to ship: 0</h4>
+    <hr />
+    <p>
+      Simply press the "Next box" button and it will give you a data matrix to
+      etch onto the custom shipping box. Make sure to hit confirm to remove the
+      box from the production queue.
+    </p>
+    <hr />
+    <button onclick="NewLazyBox();">Next box</button>
   </body>
 </html>
 <script>
+  var btp;
+
+  var bts;
+
   function BoxesShipped() {
     Swal.fire({
       title: "Work in progress...",
     });
   }
   function NewLazyBox() {
-    Swal.fire({
-      title: "Enter customer's address",
-      input: "text",
-      showCancelButton: true,
-      inputValidator: (value) => {
-        if (!value) {
-          return "You need to write something!";
-        }
-      },
-    }).then((address) => {
-      Swal.fire({
-        title: "Enter customer's zipcode",
-        input: "text",
-        showCancelButton: true,
-        inputValidator: (value) => {
-          if (!value) {
-            return "You need to write something!";
-          }
-        },
-      }).then((zipcode) => {
-        Swal.fire({
-          title: "Enter customer's name",
-          input: "text",
-          showCancelButton: true,
-          inputValidator: (value) => {
-            if (!value) {
-              return "You need to write something!";
-            }
-          },
-        }).then((name) => {
-          axios
-            .post("https://lazy-box-server.herokuapp.com/addBox", {
-              name: name.value,
-              address: address.value,
-              zipcode: zipcode.value,
-            })
-            .then(function (response) {
-              Swal.fire({
-                title: "Your new lazy box id is: " + response.data,
-                icon: "success",
+    console.log("Next box");
+    axios
+      .get("https://lazy-box-server.herokuapp.com/getNextBoxForProduction")
+      .then(function (response) {
+        console.log(response.data);
+
+        if (response.data.length < 3) {
+          Swal.fire({
+            title: "No boxes to produce",
+            icon: "info",
+          });
+        } else {
+          const dm = Swal.mixin({
+            didOpen: (toast) => {
+              var barcode = new ej.barcodegenerator.DataMatrixGenerator({
+                width: "200px",
+                height: "150px",
+                displayText: { visibility: false },
+                mode: "SVG",
+                value: response.data.id,
               });
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        });
+              barcode.appendTo("#datamatrix");
+            },
+          });
+          dm.fire({
+            title: "Data matrix: ",
+            text:
+              "<p>Laser etch this data matrix onto the bottom of the custom box.</p>",
+            icon: "info",
+            html: `<div id="datamatrix"></div>`,
+            showCancelButton: true,
+            confirmButtonText: `Confirm`,
+          }).then((value) => {
+            console.log(value);
+            if (value.isConfirmed == true) {
+              axios.get(
+                "https://lazy-box-server.herokuapp.com/removeBoxFromProductionQueue"
+              );
+              btp = btp - 1;
+
+              document.getElementById("BTP").innerHTML =
+                "Boxes to produce: " + btp;
+
+              bts = bts + 1;
+              document.getElementById("BTS").innerHTML =
+                "Boxes to ship: " + bts;
+            }
+          });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
       });
-    });
   }
 
-  axios
-    .get("https://lazy-box-server.herokuapp.com/getDashboard")
-    .then(function (response) {
-      console.log(response.data);
-      document.getElementById("BTS").innerHTML =
-        "Boxes to ship: " + response.data.itemsToShip;
+  Swal.fire({
+    title: "Enter password: ",
+    input: "text",
+  }).then((pass) => {
+    axios
+      .post("https://lazy-box-server.herokuapp.com/getDashboard", {
+        password: pass.value,
+      })
+      .then(function (response) {
+        if (response.data == "Wrong password") {
+          Swal.fire({
+            icon: "error",
+            title: "Wrong password",
+          }).then(() => {
+            window.location.reload();
+          });
+        } else {
+          document.getElementById("BTS").innerHTML =
+            "Boxes to ship: " + response.data.itemsToShip;
 
-      document.getElementById("CCTS").innerHTML =
-        "Certificates to ship: " + response.data.certificatesToShip;
+          bts = response.data.itemsToShip;
 
-      document.getElementById("BRP").innerHTML =
-        "Boxes registration percent: " + Math.round(response.data.BRP) + "%";
+          document.getElementById("CCTS").innerHTML =
+            "Certificates to ship: " + response.data.certificatesToShip;
 
-      document.getElementById("MP").innerHTML =
-        "Max: " + response.data.profits * 0.5 + "$";
-      document.getElementById("BP").innerHTML =
-        "Brian: " + response.data.profits * 0.5 + "$";
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+          document.getElementById("BRP").innerHTML =
+            "Boxes registration percent: " +
+            Math.round(response.data.BRP) +
+            "%";
+
+          document.getElementById("MP").innerHTML =
+            "Max: " + response.data.profits * 0.5 + "$";
+          document.getElementById("BP").innerHTML =
+            "Brian: " + response.data.profits * 0.5 + "$";
+
+          btp = response.data.boxesToProduce;
+
+          document.getElementById("BTP").innerHTML =
+            "Boxes to produce: " + response.data.boxesToProduce;
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  });
 </script>
