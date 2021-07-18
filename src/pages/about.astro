@@ -1,0 +1,43 @@
+---
+import MainHead from '../components/MainHead.astro';
+import Footer from '../components/Footer/index.jsx';
+import Nav from '../components/Nav/index.jsx';
+
+---
+
+<html lang="en">
+  <head>
+    <MainHead title="About | Jeanine White" />
+    <style lang="scss">
+      .heroImg {
+        object-fit: cover;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .bio {
+        font-size: var(--f-u1);
+        line-height: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <Nav />
+    <div class="wrapper">
+      <h1>About me</h1>
+      <div class="heroImg">
+        <img width="1400" height="350" src="https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=925&q=80" />
+      </div>
+      <div class="bio wrapper wrapper__readable mt8">
+        <p>
+          I’m a front end web developer, backend programmer and game developer based in San Francisco. I’m passionate about designing incredible experiences such as games and websites.
+        </p>
+
+      </div>
+    </div>
+    <Footer />
+</body>
+</html>
