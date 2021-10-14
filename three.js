@@ -110,7 +110,7 @@ scene.add(jeff);
 // Moon
 
 const moonTexture = new THREE.TextureLoader().load("public/moon.jpg");
-const normalTexture = new THREE.TextureLoader().load("public/normal.jpg");
+const normalTexture = new THREE.TextureLoader().load("public/normal.webp");
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
