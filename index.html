@@ -34,8 +34,9 @@
 
     <main>
       <header data-aos="flip-up" data-aos-anchor-placement="top-bottom">
-        <h2>Max Campbell</h2>
-        <p style="font-size: 18px">
+        <h2 id="headerTitle">Max Campbell</h2>
+        <h4 id="workTitle"></h4>
+        <p style="font-size: 18px;margin-top:0.5rem;">
           Hey there!
           <img
             width="25"
@@ -198,17 +199,20 @@
     <script src="/three.min.js"></script>
     <script src="/three.js"></script>
     <script type="module">
+
       AOS.init();
       var audio = new Audio("Pulsar.mp3");
       swal
         .fire({
           title: "Enable audio?",
-          icon: "question",
           text: "Would you like to enable audio?",
           showConfirmButton: true,
           showDenyButton: true,
+          toast:true,
+          position: 'top-right',
           confirmButtonText: "Enable",
           denyButtonText: "No thanks",
+          timer: 10000
         })
         .then((value) => {
           if (value.isConfirmed) {

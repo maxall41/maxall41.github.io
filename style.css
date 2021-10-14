@@ -19,6 +19,11 @@ canvas {
   z-index: 999;
 }
 
+#workTitle {
+  font-size: 18px;
+  margin: 0;
+}
+
 main {
   width: 100vw;
   color: white;
@@ -189,4 +194,8 @@ section {
 
 header {
   border-radius: 18px;
+}
+
+#headerTitle {
+  margin-bottom: 0.675rem;
 }
