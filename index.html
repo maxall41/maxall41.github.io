@@ -189,12 +189,13 @@
           icon: "question",
           input: "textarea",
         });
-        await fetch(
+        const fetch = await fetch(
           "https://email-server.goal-crushers-api.workers.dev/?from=" +
             email.value +
             "&content=" +
             content.value
         );
+        console.log(fetch)
         swal.fire({
           icon: "success",
           text: "Your email has been sent successfully. We will get back to you shortly.",
