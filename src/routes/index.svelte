@@ -134,11 +134,11 @@
 		src: url(m54.ttf);
 	}
 	@font-face {
-		font-family: bmb;
+		font-family: BMB;
 		src: url(BMB.ttf);
 	}
 	@font-face {
-		font-family: bmr;
+		font-family: BMR;
 		src: url(BMR.ttf);
 	}
 	h1,
@@ -147,7 +147,7 @@
 	h4,
 	h5,
 	p {
-		font-family: bmr;
+		font-family: BMR;
 	}
 	* {
 		margin: 0;

@@ -42,12 +42,12 @@
 		src: url(m54.ttf);
 	}
 	@font-face {
-		font-family: bmb;
-		src: url(bmb.ttf);
+		font-family: BMB;
+		src: url(BMB.ttf);
 	}
 	@font-face {
-		font-family: bmr;
-		src: url(bmr.ttf);
+		font-family: BMR;
+		src: url(BMR.ttf);
 	}
 	h1,
 	h2,
@@ -55,7 +55,7 @@
 	h4,
 	h5,
 	p {
-		font-family: bmr;
+		font-family: BMR;
 	}
 	* {
 		margin: 0;
