@@ -53,4 +53,32 @@
 		margin-top: 1rem;
 		margin-left: 1rem;
 	}
+	@font-face {
+		font-family: m54;
+		src: url(m54.ttf);
+	}
+	@font-face {
+		font-family: bmb;
+		src: url(bmb.ttf);
+	}
+	@font-face {
+		font-family: bmr;
+		src: url(bmr.ttf);
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	p {
+		font-family: 'bmr';
+	}
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	html,
+	body {
+		overflow-x: hidden;
+	}
 </style>
