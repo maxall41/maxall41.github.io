@@ -55,7 +55,7 @@
 	h4,
 	h5,
 	p {
-		font-family: 'bmr';
+		font-family: bmr;
 	}
 	* {
 		margin: 0;
