@@ -132,32 +132,4 @@
 	#subtitle {
 		font-family: 'm54';
 	}
-	@font-face {
-		font-family: m54;
-		src: url(m54.ttf);
-	}
-	@font-face {
-		font-family: BMB;
-		src: url(BMB.ttf);
-	}
-	@font-face {
-		font-family: BMR;
-		src: url(BMR.ttf);
-	}
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	p {
-		font-family: BMR;
-	}
-	* {
-		margin: 0;
-		padding: 0;
-	}
-	html,
-	body {
-		overflow-x: hidden;
-	}
 </style>

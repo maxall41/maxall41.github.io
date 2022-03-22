@@ -5759,19 +5759,19 @@ var init_index_svelte = __esm({
 </div>`;
     });
     css4 = {
-      code: ".fullscreen.svelte-n2k31k{width:100rem;height:100vh;position:absolute;top:0;left:0;z-index:-999}.paint-dots.svelte-n2k31k{background-image:paint(dots)}.outer.svelte-n2k31k{width:100vw;height:100vh;display:flex;justify-content:center;align-items:center}h1.svelte-n2k31k{font-size:124px;letter-spacing:40px;margin:0}p.svelte-n2k31k{font-size:28px;color:#959595;width:60vw;margin:0}.projects.svelte-n2k31k:last-child{margin-bottom:3rem !important}#title.svelte-n2k31k{font-family:'m54'}#subtitle.svelte-n2k31k{font-family:'m54'}@font-face{font-family:m54;src:url(m54.ttf)}@font-face{font-family:BMB;src:url(BMB.ttf)}@font-face{font-family:BMR;src:url(BMR.ttf)}h1.svelte-n2k31k,p.svelte-n2k31k{font-family:BMR}.svelte-n2k31k{margin:0;padding:0}",
+      code: ".fullscreen.svelte-tuwsu2{width:100rem;height:100vh;position:absolute;top:0;left:0;z-index:-999}.paint-dots.svelte-tuwsu2{background-image:paint(dots)}.outer.svelte-tuwsu2{width:100vw;height:100vh;display:flex;justify-content:center;align-items:center}h1.svelte-tuwsu2{font-size:124px;letter-spacing:40px;margin:0}p.svelte-tuwsu2{font-size:28px;color:#959595;width:60vw;margin:0}.projects.svelte-tuwsu2:last-child{margin-bottom:3rem !important}#title.svelte-tuwsu2{font-family:'m54'}#subtitle.svelte-tuwsu2{font-family:'m54'}",
       map: null
     };
     Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       $$result.css.add(css4);
-      return `${$$result.head += `${$$result.title = `<title>Max&#39;s portfolio</title>`, ""}<meta name="${"description"}" content="${"Hey there! I'm Max I love to build fullstack websites, games, and apps with all sorts of tools like Vue, Express, MongoDB, Flutter, Node.js, and Unity."}" class="${"svelte-n2k31k"}" data-svelte="svelte-15rt5no"><meta name="${"robots"}" content="${"index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"}" class="${"svelte-n2k31k"}" data-svelte="svelte-15rt5no"><link rel="${"icon"}" href="${"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>\u{1F680}</text></svg>"}" class="${"svelte-n2k31k"}" data-svelte="svelte-15rt5no">`, ""}
-<div class="${"outer svelte-n2k31k"}"><div class="${"inner svelte-n2k31k"}"><h1 id="${"title"}" class="${"svelte-n2k31k"}">Max Campbell</h1>
-		<p id="${"subtitle"}" class="${"svelte-n2k31k"}">Hi I&#39;m Max. I live in San Francisco and I&#39;m currently a freelancer who works on all sorts of
+      return `${$$result.head += `${$$result.title = `<title>Max&#39;s portfolio</title>`, ""}<meta name="${"description"}" content="${"Hey there! I'm Max I love to build fullstack websites, games, and apps with all sorts of tools like Vue, Express, MongoDB, Flutter, Node.js, and Unity."}" data-svelte="svelte-15rt5no"><meta name="${"robots"}" content="${"index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"}" data-svelte="svelte-15rt5no"><link rel="${"icon"}" href="${"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>\u{1F680}</text></svg>"}" data-svelte="svelte-15rt5no">`, ""}
+<div class="${"outer svelte-tuwsu2"}"><div class="${"inner"}"><h1 id="${"title"}" class="${"svelte-tuwsu2"}">Max Campbell</h1>
+		<p id="${"subtitle"}" class="${"svelte-tuwsu2"}">Hi I&#39;m Max. I live in San Francisco and I&#39;m currently a freelancer who works on all sorts of
 			complex and intricate projects. I&#39;m passionate about creating great experiences.
 		</p></div></div>
-<div class="${"fullscreen paint-dots svelte-n2k31k"}"></div>
+<div class="${"fullscreen paint-dots svelte-tuwsu2"}"></div>
 ${validate_component(MySkills, "MySkills").$$render($$result, {}, {}, {})}
-<div class="${"projects svelte-n2k31k"}">${validate_component(Project, "Project").$$render($$result, {
+<div class="${"projects svelte-tuwsu2"}">${validate_component(Project, "Project").$$render($$result, {
         name: "Perplexed Cassette",
         description: "Perplexed Cassette is a game made for A Jam About Time game jam. Perplexed Cassette is a game about time manipulation and collecting things. Perplexed Cassette even has multiple endings."
       }, {}, {})}
@@ -5814,9 +5814,9 @@ var entry3, js3, css5;
 var init__3 = __esm({
   ".svelte-kit/output/server/nodes/2.js"() {
     init_index_svelte();
-    entry3 = "pages/index.svelte-007db287.js";
-    js3 = ["pages/index.svelte-007db287.js", "chunks/vendor-586d6a00.js", "chunks/navigation-2ecde876.js", "chunks/singletons-d1fb5791.js"];
-    css5 = ["assets/pages/index.svelte-5c37c18e.css", "assets/navigation-5e3cbc2e.css"];
+    entry3 = "pages/index.svelte-8e7c4d67.js";
+    js3 = ["pages/index.svelte-8e7c4d67.js", "chunks/vendor-586d6a00.js", "chunks/navigation-2ecde876.js", "chunks/singletons-d1fb5791.js"];
+    css5 = ["assets/pages/index.svelte-2c36f000.css", "assets/navigation-5e3cbc2e.css"];
   }
 });
 
@@ -7964,7 +7964,7 @@ function set_paths(paths) {
 var user_hooks = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null
 }, Symbol.toStringTag, { value: "Module" }));
-var template = ({ head, body, assets: assets2, nonce }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<meta name="description" content="" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"><\/script>\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n	</head>\n	<body>\n		<div id="main">' + body + "</div>\n	</body>\n</html>\n<style>\n	@font-face {\n		font-family: m54;\n		src: local('m54');\n	}\n	@font-face {\n		font-family: bmb;\n		src: local('bmb');\n	}\n	@font-face {\n		font-family: bmr;\n		src: local('bmr');\n	}\n	h1,\n	h2,\n	h3,\n	h4,\n	h5,\n	p {\n		font-family: 'bmr';\n	}\n	* {\n		margin: 0;\n		padding: 0;\n	}\n	html,\n	body {\n		overflow-x: hidden;\n	}\n</style>\n";
+var template = ({ head, body, assets: assets2, nonce }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<meta name="description" content="" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"><\/script>\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n	</head>\n	<body>\n		<div id="main">' + body + "</div>\n	</body>\n</html>\n<style>\n	@font-face {\n		font-family: m54;\n		src: url(m54.ttf);\n	}\n	@font-face {\n		font-family: bmb;\n		src: url(bmb.ttf);\n	}\n	@font-face {\n		font-family: bmr;\n		src: url(bmr.ttf);\n	}\n	h1,\n	h2,\n	h3,\n	h4,\n	h5,\n	p {\n		font-family: 'bmr';\n	}\n	* {\n		margin: 0;\n		padding: 0;\n	}\n	html,\n	body {\n		overflow-x: hidden;\n	}\n</style>\n";
 var read = null;
 set_paths({ "base": "", "assets": "" });
 var get_hooks = (hooks) => ({
@@ -8022,7 +8022,7 @@ var manifest = {
   assets: /* @__PURE__ */ new Set([".nojekyll", "Background.png", "CNAME", "Shapes.svg", "bmb.ttf", "bmr.ttf", "favicon.png", "m54.ttf"]),
   _: {
     mime: { ".png": "image/png", ".svg": "image/svg+xml", ".ttf": "font/ttf" },
-    entry: { "file": "start-cc4df7b5.js", "js": ["start-cc4df7b5.js", "chunks/vendor-586d6a00.js", "chunks/singletons-d1fb5791.js"], "css": [] },
+    entry: { "file": "start-7460579d.js", "js": ["start-7460579d.js", "chunks/vendor-586d6a00.js", "chunks/singletons-d1fb5791.js"], "css": [] },
     nodes: [
       () => Promise.resolve().then(() => (init__(), __exports)),
       () => Promise.resolve().then(() => (init__2(), __exports2)),
