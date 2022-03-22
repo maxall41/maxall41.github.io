@@ -30,6 +30,8 @@
 		if ('paintWorklet' in CSS) {
 			//@ts-ignore
 			CSS.paintWorklet.addModule('./dots-worklet.js');
+		} else {
+			console.log('Not loading paintworklet');
 		}
 		if ('registerProperty' in CSS) {
 			//@ts-ignore
@@ -60,6 +62,8 @@
 				initialValue: '100px',
 				inherits: true
 			});
+		} else {
+			console.log('Not loading properties');
 		}
 	}
 </script>
