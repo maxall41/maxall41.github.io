@@ -4,8 +4,7 @@
 	import { goto } from '$app/navigation';
 	function view_resume() {
 		if (browser) {
-			window.location.href =
-				'https://docs.google.com/document/d/1IAs3-m5kQycWYejxJyiZoeImylr5v1Js6Yzxz3oE8yo/edit?usp=sharing';
+			window.location.href = '/resume.pdf';
 		}
 	}
 	function view_work_history() {
