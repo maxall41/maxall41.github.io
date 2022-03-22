@@ -3,54 +3,58 @@
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
 	import { browser } from '$app/env';
 	if (browser) {
-		gsap.registerPlugin(ScrollTrigger);
-		const i = setInterval(() => {
-			const el = document.getElementsByClassName('one')[0];
-			if (el != null) {
-				const scrub_value = 2.5;
-				gsap.to('.one', {
-					duration: 1,
-					height: 800,
-					scrollTrigger: {
-						trigger: '.one',
-						scrub: scrub_value
-					}
-				});
-				gsap.to('.two', {
-					duration: 1,
-					height: 700,
-					scrollTrigger: {
-						trigger: '.one',
-						scrub: scrub_value
-					}
-				});
-				gsap.to('.three', {
-					duration: 1,
-					height: 950,
-					scrollTrigger: {
-						trigger: '.one',
-						scrub: scrub_value
-					}
-				});
-				gsap.to('.four', {
-					duration: 1,
-					height: 825,
-					scrollTrigger: {
-						trigger: '.one',
-						scrub: scrub_value
-					}
-				});
-				gsap.to('.five', {
-					duration: 1,
-					height: 400,
-					scrollTrigger: {
-						trigger: '.one',
-						scrub: scrub_value
-					}
-				});
-				clearInterval(i);
-			}
-		}, 100);
+		const isReduced =
+			//@ts-ignore
+			window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
+			window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+
+		if (!!isReduced) {
+			console.log('not loading animations due to reduced motion preference');
+		} else {
+			gsap.registerPlugin(ScrollTrigger);
+			const i = setInterval(() => {
+				const el = document.getElementsByClassName('one')[0];
+				if (el != null) {
+					const scrub_value = 2.5;
+					gsap.to('.one', {
+						height: 800,
+						scrollTrigger: {
+							trigger: '.one',
+							scrub: scrub_value
+						}
+					});
+					gsap.to('.two', {
+						height: 700,
+						scrollTrigger: {
+							trigger: '.one',
+							scrub: scrub_value
+						}
+					});
+					gsap.to('.three', {
+						height: 950,
+						scrollTrigger: {
+							trigger: '.one',
+							scrub: scrub_value
+						}
+					});
+					gsap.to('.four', {
+						height: 825,
+						scrollTrigger: {
+							trigger: '.one',
+							scrub: scrub_value
+						}
+					});
+					gsap.to('.five', {
+						height: 400,
+						scrollTrigger: {
+							trigger: '.one',
+							scrub: scrub_value
+						}
+					});
+					clearInterval(i);
+				}
+			}, 100);
+		}
 	}
 </script>
 

@@ -30,7 +30,7 @@
 		<li><span>Redis</span></li>
 	</ul>
 	<div class="buttons">
-		<Button text="View my resume" callback={view_resume} showArrow={true} />
+		<Button text="View my resume for more" callback={view_resume} showArrow={true} />
 		<Button text="View my work history" callback={view_work_history} showArrow={true} />
 	</div>
 </div>

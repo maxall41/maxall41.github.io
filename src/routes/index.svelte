@@ -150,7 +150,9 @@
 		z-index: -999;
 	}
 	.paint-dots {
+		background-image: url('Background.png');
 		background-image: paint(dots);
+		background-size: cover;
 		--circle-size: 10px;
 		--circle-spacing: 15px;
 		--circle-color: #eeedec;
@@ -166,12 +168,49 @@
 		font-size: 124px;
 		letter-spacing: 40px;
 		margin: 0;
+		text-align: center;
 	}
 	p {
 		font-size: 28px;
 		color: #959595;
 		width: 60vw;
 		margin: 0;
+	}
+
+	@media only screen and (max-width: 1213px) {
+		#title {
+			font-size: 82px;
+		}
+	}
+	@media only screen and (max-width: 967px) {
+		#title {
+			font-size: 62px;
+		}
+		#subtitle {
+			font-size: 21px;
+		}
+	}
+	@media only screen and (max-width: 846px) {
+		#title {
+			font-size: 42px;
+		}
+	}
+	@media only screen and (max-width: 732px) {
+		#title {
+			letter-spacing: 21px;
+		}
+		#subtitle {
+			font-size: 18px;
+		}
+	}
+	@media only screen and (max-width: 513px) {
+		#title {
+			letter-spacing: 18px;
+			font-size: 28px;
+		}
+		#subtitle {
+			font-size: 16px;
+		}
 	}
 	.projects:last-child {
 		margin-bottom: 3rem !important;
