@@ -26,39 +26,41 @@
 		goto('/subscribed');
 	}
 
-	if ('paintWorklet' in CSS) {
-		//@ts-ignore
-		CSS.paintWorklet.addModule('./dots-worklet.js');
-	}
-	if ('registerProperty' in CSS) {
-		//@ts-ignore
-		CSS.registerProperty({
-			name: '--circle-color',
-			syntax: '<color>',
-			initialValue: '#EEEDEC',
-			inherits: true
-		});
-		//@ts-ignore
-		CSS.registerProperty({
-			name: '--circle-secondary-color',
-			syntax: '<color>',
-			initialValue: 'pink',
-			inherits: true
-		});
-		//@ts-ignore
-		CSS.registerProperty({
-			name: '--circle-size',
-			syntax: '<length-percentage>',
-			initialValue: '100px',
-			inherits: true
-		});
-		//@ts-ignore
-		CSS.registerProperty({
-			name: '--circle-spacing',
-			syntax: '<length-percentage>',
-			initialValue: '100px',
-			inherits: true
-		});
+	if (browser) {
+		if ('paintWorklet' in CSS) {
+			//@ts-ignore
+			CSS.paintWorklet.addModule('./dots-worklet.js');
+		}
+		if ('registerProperty' in CSS) {
+			//@ts-ignore
+			CSS.registerProperty({
+				name: '--circle-color',
+				syntax: '<color>',
+				initialValue: '#EEEDEC',
+				inherits: true
+			});
+			//@ts-ignore
+			CSS.registerProperty({
+				name: '--circle-secondary-color',
+				syntax: '<color>',
+				initialValue: 'pink',
+				inherits: true
+			});
+			//@ts-ignore
+			CSS.registerProperty({
+				name: '--circle-size',
+				syntax: '<length-percentage>',
+				initialValue: '100px',
+				inherits: true
+			});
+			//@ts-ignore
+			CSS.registerProperty({
+				name: '--circle-spacing',
+				syntax: '<length-percentage>',
+				initialValue: '100px',
+				inherits: true
+			});
+		}
 	}
 </script>
 
