@@ -4,9 +4,8 @@
 	import { goto } from '$app/navigation';
 	function view_resume() {
 		if (browser) {
-			goto(`/resume.pdf`, {
-				noscroll: true
-			});
+			window.location.href =
+				'https://docs.google.com/document/d/1IAs3-m5kQycWYejxJyiZoeImylr5v1Js6Yzxz3oE8yo/edit?usp=sharing';
 		}
 	}
 	function view_work_history() {
