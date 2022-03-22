@@ -51,7 +51,7 @@
 		</p>
 	</div>
 </div>
-<img class="fullscreen" src="Background.png" alt="background" />
+<div class="fullscreen paint-dots" />
 <MySkills />
 <div class="projects">
 	<Project
@@ -101,6 +101,9 @@
 		top: 0;
 		left: 0;
 		z-index: -999;
+	}
+	.paint-dots {
+		background-image: paint(dots);
 	}
 	.outer {
 		width: 100vw;
