@@ -35,6 +35,8 @@
 		} else {
 			console.log('Not loading paintworklet');
 		}
+		console.log('R', 'registerProperty' in CSS);
+		console.log('P', 'paintWorklet' in CSS);
 		if ('registerProperty' in CSS) {
 			try {
 				//@ts-ignore

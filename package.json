@@ -30,6 +30,7 @@
 	"dependencies": {
 		"@sveltejs/adapter-static": "^1.0.0-next.29",
 		"@zerodevx/svelte-toast": "^0.7.1",
+		"autoprefixer": "^10.4.4",
 		"axios": "^0.26.1",
 		"gh-pages": "^3.2.3",
 		"gsap": "^3.9.1"
