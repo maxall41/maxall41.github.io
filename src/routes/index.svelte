@@ -141,6 +141,9 @@
 	}
 	.paint-dots {
 		background-image: paint(dots);
+		--circle-size: 10px;
+		--circle-spacing: 15px;
+		--circle-color: #eeedec;
 	}
 	.outer {
 		width: 100vw;
