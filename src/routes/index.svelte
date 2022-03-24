@@ -150,7 +150,7 @@
 		z-index: -999;
 	}
 	.paint-dots {
-		background-image: url('Background.png');
+		background-image: url('https://www.maxc.codes/Background.png');
 		background-image: paint(dots);
 		background-size: cover;
 		--circle-size: 10px;
