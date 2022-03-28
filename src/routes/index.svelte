@@ -5,6 +5,7 @@
 	import { browser } from '$app/env';
 	import { goto } from '$app/navigation';
 	import MySkills from '../components/MySkills.svelte';
+	import Button from '../components/actionButton.svelte';
 	let emailInput = '';
 
 	async function subscribe(email) {
@@ -24,6 +25,12 @@
 		}
 		await subscribe(emailInput);
 		goto('/subscribed');
+	}
+
+	function viewBlog() {
+		if (browser) {
+			window.location.href = 'https://blog.maxc.codes';
+		}
 	}
 
 	if (browser) {
@@ -96,6 +103,14 @@
 			Hi I'm Max. I live in San Francisco and I'm currently a freelancer who works on all sorts of
 			complex and intricate projects. I'm passionate about creating great experiences.
 		</p>
+		<div class="buttons">
+			<Button text="View my blog" callback={() => viewBlog()} showArrow={true} />
+			<Button
+				text="Learn more"
+				callback={() => document.getElementById('my-skills').scrollIntoView()}
+				showArrow={true}
+			/>
+		</div>
 	</div>
 </div>
 <div class="fullscreen paint-dots" />
@@ -220,5 +235,10 @@
 	}
 	#subtitle {
 		font-family: 'm54';
+	}
+	.buttons {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
 	}
 </style>

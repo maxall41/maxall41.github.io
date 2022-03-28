@@ -16,7 +16,7 @@
 	}
 </script>
 
-<div class="my-skills">
+<div id="my-skills">
 	<h1>My Skills:</h1>
 	<ul>
 		<li><span>Vue.js</span></li>
@@ -43,7 +43,7 @@
 	h1 {
 		font-family: bmb;
 	}
-	.my-skills {
+	#my-skills {
 		margin-left: 0.65rem;
 	}
 	ul {
