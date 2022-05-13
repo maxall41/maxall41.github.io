@@ -1,2 +1,1 @@
-# maxall41.github.io
-MAIN Is not current branch see `newv2` for current version of site hosted on Vercel
+# MAIN Is not current branch see `newv2` for current version of site hosted on Vercel
