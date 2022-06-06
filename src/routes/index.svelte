@@ -34,7 +34,7 @@
 	}
 
 	if (browser) {
-		if (!'paintWorklet' in CSS) {
+		if ('paintWorklet' in CSS) {
 			try {
 				//@ts-ignore
 				CSS.paintWorklet.addModule('./dots-worklet.js');
